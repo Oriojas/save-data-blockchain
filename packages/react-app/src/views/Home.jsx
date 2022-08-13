@@ -20,6 +20,7 @@ function Home({ yourLocalBalance, readContracts }) {
 
       <div style={{ border: "1px solid #cccccc", padding: 16, width: 400, margin: "auto", marginTop: 64 }}>
         <h2>Save your data in a blockchain</h2>
+        <p>For small fee</p>
         <Divider />
         <br></br>
         <div>  
@@ -41,7 +42,20 @@ function Home({ yourLocalBalance, readContracts }) {
                   >
                     <Input />
               </Form.Item>
-
+              
+              <Form.Item
+                label="Destination"
+                name="destination"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input the destination",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>
+              
               <Form.Item
                 label="Name"
                 name="name"
@@ -53,7 +67,47 @@ function Home({ yourLocalBalance, readContracts }) {
                   ]}
                   >
                     <Input />
-              </Form.Item>        
+              </Form.Item>
+
+              <Form.Item
+                label="Amount"
+                name="amount"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input amount",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>
+              
+              <Form.Item
+                label="Description"
+                name="description"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input description",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>
+              
+              <Form.Item
+                label="Status"
+                name="status"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input status",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>            
+          
           </Form> 
           <Divider />
           <span style={{ marginRight: 8 }}>🤓</span>
