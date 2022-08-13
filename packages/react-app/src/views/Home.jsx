@@ -1,5 +1,6 @@
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
+import { Button, Divider, Form, Input } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,60 @@ function Home({ yourLocalBalance, readContracts }) {
 
   return (
     <div>
+
+      <div style={{ border: "1px solid #cccccc", padding: 16, width: 400, margin: "auto", marginTop: 64 }}>
+        <h2>Save your data in a blockchain</h2>
+        <Divider />
+        <br></br>
+        <div>  
+          <Form name="basic" 
+            labelCol={{ span: 8,}}
+            wrapperCol={{ span: 16,}}
+            initialValues={{ remember: true, }}
+            autoComplete="off"
+            >
+              <Form.Item
+                label="Origin"
+                name="origin"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input the origin",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Name"
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input name",
+                  },
+                  ]}
+                  >
+                    <Input />
+              </Form.Item>        
+          </Form> 
+          <Divider />
+          <span style={{ marginRight: 8 }}>🤓</span>
+          The "purpose" variable from your contract is{" "}
+          <span
+            className="highlight"
+            style={{
+              marginLeft: 4,
+              /* backgroundColor: "#f9f9f9", */ padding: 4,
+              borderRadius: 4,
+              fontWeight: "bolder",
+            }}
+          >
+            {purpose}
+          </span>
+        </div>          
+      </div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>📝</span>
         This Is Your App Home. You can start editing it in{" "}
@@ -117,6 +172,7 @@ function Home({ yourLocalBalance, readContracts }) {
         <span style={{ marginRight: 8 }}>🛠</span>
         Tinker with your smart contract using the <Link to="/debug">"Debug Contract"</Link> tab.
       </div>
+      <Divider />
     </div>
   );
 }
