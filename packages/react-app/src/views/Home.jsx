@@ -1,20 +1,31 @@
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
 import { Button, Divider, Form, Input } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
  * @param {*} yourLocalBalance balance on current network
  * @param {*} readContracts contracts from current chain already pre-loaded using ethers contract module. More here https://docs.ethers.io/v5/api/contract/contract/
+ * @param {*} tx
+ * @param {*} writeContracts
  * @returns react component
  **/
-function Home({ yourLocalBalance, readContracts }) {
+function Home({ yourLocalBalance, 
+                readContracts,
+                tx,
+                writeContracts }) {
   // you can also use hooks locally in your component of choice
   // in this case, let's keep track of 'purpose' variable from our contract
   const purpose = useContractReader(readContracts, "YourContract", "purpose");
-
+  const [ origin, newOrigin ] = useState("loading...");
+  const [ destination, newDestination ] = useState("loading...");
+  const [ name, newName ] = useState("loading...");
+  const [ amount, newAmount ] = useState("loading...");
+  const [ description, newDescription ] = useState("loading...");
+  const [ status, newStatus ] = useState("loading...");
+  
   return (
     <div>
 
@@ -24,7 +35,8 @@ function Home({ yourLocalBalance, readContracts }) {
         <Divider />
         <br></br>
         <div>  
-          <Form name="basic" 
+          <Form name="basic"
+            size="small" 
             labelCol={{ span: 8,}}
             wrapperCol={{ span: 16,}}
             initialValues={{ remember: true, }}
@@ -40,7 +52,11 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input /* Input data Name */
+                      onChange={e => {
+                        newOrigin(e.target.value);
+                      }}
+                    />
               </Form.Item>
               
               <Form.Item
@@ -53,7 +69,11 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input 
+                      onChange={e => {
+                        newDestination(e.target.value);
+                      }}
+                    />
               </Form.Item>
               
               <Form.Item
@@ -66,7 +86,11 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input
+                      onChange={e => {
+                        newName(e.target.value);
+                      }}
+                    />
               </Form.Item>
 
               <Form.Item
@@ -79,7 +103,10 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input 
+                    onChange={e => {
+                      newAmount(e.target.value);
+                    }}/>
               </Form.Item>
               
               <Form.Item
@@ -92,7 +119,11 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input 
+                    onChange={e => {
+                      newDescription(e.target.value);
+                    }}
+                    />
               </Form.Item>
               
               <Form.Item
@@ -105,7 +136,11 @@ function Home({ yourLocalBalance, readContracts }) {
                   },
                   ]}
                   >
-                    <Input />
+                    <Input 
+                    onChange={e => {
+                      newStatus(e.target.value)
+                    }}
+                    />
               </Form.Item>            
           
           </Form> 
@@ -124,6 +159,38 @@ function Home({ yourLocalBalance, readContracts }) {
             {purpose}
           </span>
         </div>          
+        <Button
+            style={{ marginTop: 8 }}
+            onClick={async () => {
+              /* look how you call setPurpose on your contract: */
+              /* notice how you pass a call back for tx updates too */
+              const result = tx(writeContracts.YourContract.pushData(origin,
+                                                            destination,
+                                                            name,
+                                                            amount,
+                                                            description,
+                                                            status), update => {
+                console.log("📡 Transaction Update:", update);
+                if (update && (update.status === "confirmed" || update.status === 1)) {
+                  console.log(" 🍾 Transaction " + update.hash + " finished!");
+                  console.log(
+                    " ⛽️ " +
+                      update.gasUsed +
+                      "/" +
+                      (update.gasLimit || update.gas) +
+                      " @ " +
+                      parseFloat(update.gasPrice) / 1000000000 +
+                      " gwei",
+                  );
+                }
+              });
+              console.log("awaiting metamask/web3 confirm result...", result);
+              console.log(await result);
+            }}
+          >
+            Save Data
+          </Button>
+      
       </div>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>📝</span>
