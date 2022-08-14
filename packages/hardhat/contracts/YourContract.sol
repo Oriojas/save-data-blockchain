@@ -2,8 +2,6 @@ pragma solidity >=0.8.0 <0.9.0;
 //SPDX-License-Identifier: MIT
 
 import "hardhat/console.sol";
-// import "@openzeppelin/contracts/access/Ownable.sol"; 
-// https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
 
@@ -16,10 +14,7 @@ contract YourContract {
       string status,
       address wallet
   );
-
-  event SetPurpose(address sender, string purpose);
-
-  string public purpose = "Hello word xD";
+  
   string public origin;
   string public destination;
   string public name;
@@ -31,13 +26,6 @@ contract YourContract {
   constructor() payable {
     // what should we do on deploy?
   }
-
-  function setPurpose(string memory newPurpose) public {
-      purpose = newPurpose;
-      console.log(msg.sender,"set purpose to",purpose);
-      emit SetPurpose(msg.sender, purpose);
-  }
-
   function pushData(string memory _origin,
                     string memory _destination, 
                     string memory _name,
