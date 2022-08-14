@@ -27,11 +27,14 @@ function Subgraph(props) {
   const EXAMPLE_GRAPHQL = `
   query MyQuery {
     pushDatas(first: 5, orderDirection: asc, orderBy: amount) {
+      id
       origin
       destination
       name
       amount
+      description
       status
+      create
     }
   }
   `;
