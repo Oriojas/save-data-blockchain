@@ -1,33 +1,32 @@
-import { BigInt, Address } from "@graphprotocol/graph-ts";
-import {
-  YourContract,
-  SetPurpose,
-} from "../generated/YourContract/YourContract";
-import { Purpose, Sender } from "../generated/schema";
+import { BigInt } from "@graphprotocol/graph-ts";
+import { newData } from "../generated/YourContract/YourContract";
+import { pushData } from "../generated/schema";
 
-export function handleSetPurpose(event: SetPurpose): void {
-  let senderString = event.params.sender.toHexString();
+export function handlenewData(event: newData): void {
+  // Entities can be loaded from the store using a string ID; this ID
+  // needs to be unique across all entities of the same type
+  let entity = pushData.load(event.transaction.from.toHex())
 
-  let sender = Sender.load(senderString);
+  // Entities only exist after they have been saved to the store;
+  // `null` checks allow to create entities on demand
+  if (!entity) {
+    entity = new pushData(event.transaction.from.toHex())
 
-  if (sender === null) {
-    sender = new Sender(senderString);
-    sender.address = event.params.sender;
-    sender.createdAt = event.block.timestamp;
-    sender.purposeCount = BigInt.fromI32(1);
-  } else {
-    sender.purposeCount = sender.purposeCount.plus(BigInt.fromI32(1));
+    // Entity fields can be set using simple assignments
+    entity.amount = BigInt.fromI32(0)
   }
 
-  let purpose = new Purpose(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  );
+  // BigInt and BigDecimal math are supported
+  entity.amount = entity.amount + BigInt.fromI32(1)
 
-  purpose.purpose = event.params.purpose;
-  purpose.sender = senderString;
-  purpose.createdAt = event.block.timestamp;
-  purpose.transactionHash = event.transaction.hash.toHex();
+  // Entity fields can be set based on event parameters
+  entity.origin = event.params.origin
+  entity.destination = event.params.destination
+  entity.name = event.params.name
+  entity.description = event.params.description
+  entity.status = event.params.status
+  entity.create = event.block.timestamp
 
-  purpose.save();
-  sender.save();
+  // Entities can be written to the store with `.save()`
+  entity.save()
 }

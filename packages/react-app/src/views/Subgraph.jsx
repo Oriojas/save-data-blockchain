@@ -25,45 +25,18 @@ function Subgraph(props) {
   }
 
   const EXAMPLE_GRAPHQL = `
-  {
-    purposes(first: 25, orderBy: createdAt, orderDirection: desc) {
-      id
-      purpose
-      createdAt
-      sender {
-        id
-      }
-    }
-    senders {
-      id
-      address
-      purposeCount
+  query MyQuery {
+    pushDatas(first: 5, orderDirection: asc, orderBy: amount) {
+      origin
+      destination
+      name
+      amount
+      status
     }
   }
   `;
   const EXAMPLE_GQL = gql(EXAMPLE_GRAPHQL);
   const { loading, data } = useQuery(EXAMPLE_GQL, { pollInterval: 2500 });
-
-  const purposeColumns = [
-    {
-      title: "Purpose",
-      dataIndex: "purpose",
-      key: "purpose",
-    },
-    {
-      title: "Sender",
-      key: "id",
-      render: record => <Address value={record.sender.id} ensProvider={props.mainnetProvider} fontSize={16} />,
-    },
-    {
-      title: "createdAt",
-      key: "createdAt",
-      dataIndex: "createdAt",
-      render: d => new Date(d * 1000).toISOString(),
-    },
-  ];
-
-  const [newPurpose, setNewPurpose] = useState("loading...");
 
   const deployWarning = (
     <div style={{ marginTop: 8, padding: 8 }}>Warning: 🤔 Have you deployed your subgraph yet?</div>
@@ -115,11 +88,6 @@ function Subgraph(props) {
       </div>
 
       <div style={{ width: 780, margin: "auto", paddingBottom: 64 }}>
-        {data ? (
-          <Table dataSource={data.purposes} columns={purposeColumns} rowKey="id" />
-        ) : (
-          <Typography>{loading ? "Loading..." : deployWarning}</Typography>
-        )}
 
         <div style={{ margin: 32, height: 400, border: "1px solid #888888", textAlign: "left" }}>
           <GraphiQL fetcher={graphQLFetcher} docExplorerOpen query={EXAMPLE_GRAPHQL} />

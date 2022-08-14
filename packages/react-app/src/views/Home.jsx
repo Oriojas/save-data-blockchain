@@ -18,7 +18,6 @@ function Home({ yourLocalBalance,
                 writeContracts }) {
   // you can also use hooks locally in your component of choice
   // in this case, let's keep track of 'purpose' variable from our contract
-  const purpose = useContractReader(readContracts, "YourContract", "purpose");
   const [ origin, newOrigin ] = useState("loading...");
   const [ destination, newDestination ] = useState("loading...");
   const [ name, newName ] = useState("loading...");
@@ -30,7 +29,7 @@ function Home({ yourLocalBalance,
     <div>
       <div style={{ border: "1px solid #cccccc", padding: 16, width: 400, margin: "auto", marginTop: 64 }}>
         <h2>Save your data in a blockchain</h2>
-        <p>For small fee 🤓</p>
+        <p>For a small fee 🤓</p>
         <Divider />
         <br></br>
         <div>  
