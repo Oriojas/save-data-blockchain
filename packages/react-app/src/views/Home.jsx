@@ -1,8 +1,5 @@
-import { useContractReader } from "eth-hooks";
-import { ethers } from "ethers";
 import { Button, Divider, Form, Input } from "antd";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use

@@ -17,7 +17,8 @@ export function handlenewData(event: newData): void {
   }
 
   // BigInt and BigDecimal math are supported
-  entity.amount = entity.amount + BigInt.fromI32(1)
+  entity.amount = entity.amount.plus(BigInt.fromI32(2))
+  
 
   // Entity fields can be set based on event parameters
   entity.origin = event.params.origin
