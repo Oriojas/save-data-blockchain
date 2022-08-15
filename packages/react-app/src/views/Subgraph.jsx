@@ -4,6 +4,7 @@ import GraphiQL from "graphiql";
 import "graphiql/graphiql.min.css";
 import fetch from "isomorphic-fetch";
 import React, { useState } from "react";
+import { Divider } from "antd";
 
 const highlight = {
   marginLeft: 4,
@@ -47,23 +48,6 @@ function Subgraph(props) {
     <>
 
       <div style={{ margin: 32 }}>
-        <span style={{ marginRight: 8 }}>📝</span>
-        Create your <b>local subgraph</b> by running
-        <span className="highlight" style={highlight}>
-          yarn graph-create-local
-        </span>
-        (only required once!)
-      </div>
-
-      <div style={{ margin: 32 }}>
-        <span style={{ marginRight: 8 }}>🚢</span>
-        Deploy your <b>local subgraph</b> by running
-        <span className="highlight" style={highlight}>
-          yarn graph-ship-local
-        </span>
-      </div>
-
-      <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>🖍️</span>
         Edit your <b>local subgraph</b> in
         <span className="highlight" style={highlight}>
@@ -79,23 +63,14 @@ function Subgraph(props) {
         </a>
         )
       </div>
-
-      <div style={{ margin: 32 }}>
-        <span style={{ marginRight: 8 }}>🤩</span>
-        Deploy your <b>contracts and your subgraph</b> in one go by running
-        <span className="highlight" style={highlight}>
-          yarn deploy-and-graph
-        </span>
-      </div>
-
+      <Divider />
       <div style={{ width: 780, margin: "auto", paddingBottom: 64 }}>
 
         <div style={{ margin: 32, height: 400, border: "1px solid #888888", textAlign: "left" }}>
           <GraphiQL fetcher={graphQLFetcher} docExplorerOpen query={EXAMPLE_GRAPHQL} />
         </div>
       </div>
-
-      <div style={{ padding: 64 }}>...</div>
+      <Divider />
     </>
   );
 }
