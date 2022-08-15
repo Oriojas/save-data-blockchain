@@ -170,7 +170,7 @@ function Home({ yourLocalBalance,
               console.log(await result);
             }}
           >
-            Save Data
+          Save Data 💾 + 🤑
           </Button>      
       </div>
     <Divider />

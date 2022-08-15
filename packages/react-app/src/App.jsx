@@ -293,6 +293,9 @@ function App(props) {
         <Menu.Item key="/subgraph">
           <Link to="/subgraph">Subgraph</Link>
         </Menu.Item>
+        <Menu.Item key="/ExampleUI">
+          <Link to="/ExampleUI">Withdraw</Link>
+        </Menu.Item>
       </Menu>
 
       <Switch>

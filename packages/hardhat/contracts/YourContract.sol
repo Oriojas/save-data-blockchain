@@ -38,8 +38,14 @@ contract YourContract is Ownable {
     emit sendFee(msg.sender, fee);
   }
 
-  function withDraw(uint _amount) external onlyOwner {
-    payable(msg.sender).transfer(_amount);
+  function getBalance() public view returns (uint) {
+    console.log("balance", address(this).balance);
+    return address(this).balance;
+  }
+
+  function withDraw() public {
+    payable(msg.sender).transfer(address(this).balance);
+    console.log("value", address(this).balance);
   }
 
   // to support receiving ETH by default

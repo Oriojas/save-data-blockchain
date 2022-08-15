@@ -41,7 +41,7 @@ function Subgraph(props) {
   const { loading, data } = useQuery(EXAMPLE_GQL, { pollInterval: 2500 });
 
   const deployWarning = (
-    <div style={{ marginTop: 8, padding: 8 }}>Warning: 🤔 Have you deployed your subgraph yet?</div>
+  <div style={{ marginTop: 8, padding: 8 }}>Warning: 🤔 Have you deployed your subgraph yet?</div>
   );
 
   return (
