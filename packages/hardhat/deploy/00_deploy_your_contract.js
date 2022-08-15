@@ -23,6 +23,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     // args: [ "Hello", ethers.utils.parseEther("1.5") ],
     log: true,
     waitConfirmations: 5,
+    value: ethers.utils.parseEther("0.05")
   });
 
   // Getting a previously deployed contract
@@ -53,7 +54,6 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const yourContract = await deploy("YourContract", [], {
   value: ethers.utils.parseEther("0.05")
   });
-  */
 
   /*
   //If you want to link a library into your contract:

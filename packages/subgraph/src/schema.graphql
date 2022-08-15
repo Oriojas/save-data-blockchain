@@ -1,15 +1,10 @@
-type Purpose @entity {
+type pushData @entity {
   id: ID!
-  sender: Sender!
-  purpose: String!
-  createdAt: BigInt!
-  transactionHash: String!
-}
-
-type Sender @entity {
-  id: ID!
-  address: Bytes!
-  purposes: [Purpose!] @derivedFrom(field: "sender")
-  createdAt: BigInt!
-  purposeCount: BigInt!
+  origin: String!
+  destination: String!
+  name: String!
+  amount: BigInt!
+  description: String!
+  status: String!
+  create: BigInt!
 }
