@@ -26,9 +26,10 @@ contract YourContract is Ownable {
     console.log("destination:", _destination);
     console.log("name:", _name);
     console.log("amount:", _amount);
+    console.log("description:", _description);
     console.log("status:", _status);
     console.log("wallet:", msg.sender);
-    emit newData(_name, _origin, _name, _amount, _description, _status, msg.sender);
+    emit newData(_origin, _destination, _name, _amount, _description, _status, msg.sender);
     
     // Call returns a boolean value indicating success or failure.
     (bool sent, ) = msg.sender.call{value: fee}("");
