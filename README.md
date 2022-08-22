@@ -4,7 +4,7 @@
 
 🧪 Quickly experiment with Solidity using a frontend that adapts to your smart contract, app for save data in the blockchain, [🏗 Scaffold-ETH](https://docs.scaffoldeth.io/scaffold-eth/getting-started/quick-start) beautiful project [demo](https://oriojas-lethal-monkey.surge.sh/):
 
-![image](img_readme/img_1.jpg)
+![image](img_readme/img_1.png)
 
 
 # 🏄‍♂️ Quick Start
