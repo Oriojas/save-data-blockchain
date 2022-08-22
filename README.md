@@ -59,7 +59,7 @@ yarn deploy
 This a small application save shipping data (for a small fee 🤓) to the blockchain and can be consulted with [TheGraph](https://thegraph.com/en/)
 
 ## Local deploy
-User master branch in [save-data-blockchain](https://github.com/Oriojas/save-data-blockchain.git) and follow the instructions [The Graph Scaffold-eth | Docs](https://docs.scaffoldeth.io/scaffold-eth/toolkit/infrastructure/the-graph), deploy a local graph in you PC and query data save in local in the chain of HardHat (requires install [docker](https://www.docker.com/products/docker-desktop/)):
+Used master branch in [save-data-blockchain](https://github.com/Oriojas/save-data-blockchain.git) and follow the instructions [The Graph Scaffold-eth | Docs](https://docs.scaffoldeth.io/scaffold-eth/toolkit/infrastructure/the-graph), deploy a local graph in you PC and query data save in local in the chain of HardHat (requires install [docker](https://www.docker.com/products/docker-desktop/)):
 
 * Step 1: Clean up previous data:
 
