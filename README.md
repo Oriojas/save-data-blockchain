@@ -89,6 +89,42 @@ And your graph is running:
 
 ![image](img_readme/img_2.jpg)
 
+## Sample query
+
+```graphql
+  query MyQuery {
+    pushDatas(first: 5, orderDirection: asc, orderBy: amount) {
+      id
+      origin
+      destination
+      name
+      amount
+      description
+      status
+      create
+    }
+  }
+```  
+response [graph](https://api.studio.thegraph.com/query/23301/save_data_blockchain/v0.0.10):
+
+```graphql
+{
+  "data": {
+    "pushDatas": [
+      {
+        "id": "0x5027323b073841dfb6481f2a2aff38c1f393b9fb",
+        "origin": "Colombia",
+        "destination": "Venezuela",
+        "name": "Cafe",
+        "amount": "6",
+        "description": "bags",
+        "status": "In transit",
+        "create": "1661137750"
+      }
+    ]
+  }
+}
+```
 
 # 🍦 Other Flavors
 - [scaffold-eth-typescript](https://github.com/scaffold-eth/scaffold-eth-typescript)
