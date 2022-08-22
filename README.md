@@ -22,7 +22,7 @@ git clone https://github.com/scaffold-eth/scaffold-eth.git
 ```bash
 cd scaffold-eth
 yarn install
-yarn chain
+yarn chain --hostname 0.0.0.0
 ```
 
 > in a second terminal window, start your 📱 frontend:
@@ -43,6 +43,12 @@ yarn deploy
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
+📈 Edit your graph `subgraph.yaml` in `packages/subgraph/subgraph.yaml` 
+
+📈 Edit your graph query `schema.graphql` in `packages/subgraph/src/schema.graphql`
+
+📈 Edit your graph ts `mapping.ts` in `packages/subgraph/src/mapping.ts`
+
 💼 Edit your deployment scripts in `packages/hardhat/deploy`
 
 📱 Open http://localhost:3000 to see the app
@@ -53,9 +59,35 @@ yarn deploy
 This a small application save shipping data (for a small fee 🤓) to the blockchain and can be consulted with [TheGraph](https://thegraph.com/en/)
 
 ## Local deploy
-User master branch in [save-data-blockchain](https://github.com/Oriojas/save-data-blockchain.git) and follow the instructions [The Graph Scaffold-eth | Docs](https://docs.scaffoldeth.io/scaffold-eth/toolkit/infrastructure/the-graph), yuo deploy a local graph in you PC and query data save in local in the chain of HardHat:
+User master branch in [save-data-blockchain](https://github.com/Oriojas/save-data-blockchain.git) and follow the instructions [The Graph Scaffold-eth | Docs](https://docs.scaffoldeth.io/scaffold-eth/toolkit/infrastructure/the-graph), deploy a local graph in you PC and query data save in local in the chain of HardHat (requires install [docker](https://www.docker.com/products/docker-desktop/)):
 
+* Step 1: Clean up previous data:
 
+```bash
+yarn clean-graph-node
+```
+
+* Step 2: Spin up a local graph node by running (this may take a few minutes)
+
+```bash
+yarn run-graph-node
+```
+
+* Step 3: Create your local subgraph by running
+
+```bash
+yarn graph-create-local
+```
+
+* Step 4: Deploy your local subgraph by running
+
+```bash
+yarn graph-ship-local
+```
+
+And your graph is running:
+
+![image](img_readme/img_2.jpg)
 
 
 # 🍦 Other Flavors
