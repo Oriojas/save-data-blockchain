@@ -43,7 +43,7 @@ yarn deploy
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
-📈 Edit your graph `subgraph.yaml` in `packages/subgraph/subgraph.yaml` 
+📈 Edit your graph `subgraph.yaml` in `packages/subgraph/subgraph.yaml` (change contract address)
 
 📈 Edit your graph query `schema.graphql` in `packages/subgraph/src/schema.graphql`
 

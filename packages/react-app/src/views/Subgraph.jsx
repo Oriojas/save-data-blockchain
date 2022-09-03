@@ -64,11 +64,18 @@ function Subgraph(props) {
         )
       </div>
       <Divider />
-      <div style={{ width: 780, margin: "auto", paddingBottom: 64 }}>
-
-        <div style={{ margin: 32, height: 400, border: "1px solid #888888", textAlign: "left" }}>
-          <GraphiQL fetcher={graphQLFetcher} docExplorerOpen query={EXAMPLE_GRAPHQL} />
-        </div>
+      <div style={{ margin: 32 }}>
+        <span style={{ marginRight: 8 }}>📈</span>
+        The queries in publish graph
+        (this 🤓{" "}
+        <a
+          href="https://api.studio.thegraph.com/query/23301/save_data_blockchain/v0.0.10"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          here
+        </a>
+        )
       </div>
       <Divider />
     </>
