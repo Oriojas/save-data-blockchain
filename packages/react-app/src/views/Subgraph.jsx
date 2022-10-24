@@ -69,7 +69,7 @@ function Subgraph(props) {
         The queries in publish graph
         (this 🤓{" "}
         <a
-          href="https://api.studio.thegraph.com/query/23301/save_data_blockchain/v0.0.10"
+          href="https://api.studio.thegraph.com/query/23301/save_data_blockchain_goerli/v0.0.2"
           target="_blank"
           rel="noopener noreferrer"
         >
